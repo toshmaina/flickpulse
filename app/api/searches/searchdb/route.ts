@@ -11,13 +11,14 @@ export const POST  = async (req: NextRequest, res: NextResponse) => {
     const search: string = await req.json();
     try {
          if (!search) throw new Error("The search term cannot be empty");
-          await sql`INSERT INTO Search ( searchTerm ) VALUES (${search});`;
+       const result =  await sql`INSERT INTO Search ( searchTerm ) VALUES (${search});`;
+        return NextResponse.json({result});
        
     } catch (error) {
         return NextResponse.json({ error }, { status: 500 });
     }
-    const result = await sql`SELECT * FROM Search;`;
-     return NextResponse.json({result},{ statusText: 'success'  });
+   /*  const result = await sql`SELECT * FROM Search;`;
+     return NextResponse.json({result},{ statusText: 'success'  }); */
 
    
     
