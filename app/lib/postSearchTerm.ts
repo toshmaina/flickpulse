@@ -1,11 +1,13 @@
 const postSearchTerm = async (searchTerm: string) => {
      
     try {
-     const response = await fetch(`http://localhost:3000/api/searches`, {
+     const response = await fetch(`http://localhost:3000/api/searches/searchdb`, {
          method: "POST", 
          body: JSON.stringify(searchTerm)
     });
-        if (!response.ok) throw new Error("Could not post search");  
+        if (!response.ok) throw new Error("Could not post search"); 
+        console.log(response.statusText);
+        
         const data =  await response.json();
         console.log(data);   
     } catch (error) {

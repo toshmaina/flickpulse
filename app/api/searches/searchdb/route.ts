@@ -9,10 +9,15 @@ export const POST  = async (req: NextRequest, res: NextResponse) => {
     // console.log(search);
     
     const search: string = await req.json();
+    console.log(search);
+    
     try {
          if (!search) throw new Error("The search term cannot be empty");
-       const result =  await sql`INSERT INTO Search ( searchTerm ) VALUES (${search});`;
-        return NextResponse.json({result});
+        const result = await sql`INSERT INTO Search ( Searchterm ) VALUES (${search});`;
+          console.log(result);
+        return NextResponse.json({ result });
+      
+        
        
     } catch (error) {
         return NextResponse.json({ error }, { status: 500 });
