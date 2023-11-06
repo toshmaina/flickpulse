@@ -5,18 +5,19 @@ import postSearchTerm from "../lib/postSearchTerm";
 
 
 
+
 type Props = {
     params: {
         searchTerm:string 
     }
 }
  export const generateMetadata = async ({ params: { searchTerm } }: Props): Promise<Metadata> => {
-    const data: Promise<Array<Movie>> = fetchMovies(searchTerm);
+    const data: Promise<Array<Movie> | null> = fetchMovies(searchTerm);
      const movies = await data;
-     
+     const search = searchTerm.replaceAll("%20", " ");     
     return {
-        title: Boolean(movies[0]['Title']) ? searchTerm : `${searchTerm} Not Found`,
-        description: Boolean(movies[0]['Title']) ? `This is the page for ${searchTerm}` : `${searchTerm} cannot be displayed on this page`
+        title: Boolean(movies?.[0]?.['Title']) ? search : `${search} Not Found`,
+        description: `${movies?.[0]?.['Title']} page` ??  `${search} cannot be displayed on this page`
     };
 }; 
 

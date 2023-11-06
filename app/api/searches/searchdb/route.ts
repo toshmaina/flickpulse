@@ -8,13 +8,15 @@ export const POST  = async (req: NextRequest, res: NextResponse) => {
     //const search = searchParams.get('searchTerm');
     // console.log(search);
     
-    const search: string = await req.json();
+    const data: string = await req.json();
+    const search = data.replaceAll("%20"," ")
+
     console.log(search);
     
     try {
          if (!search) throw new Error("The search term cannot be empty");
         const result = await sql`INSERT INTO Search ( Searchterm ) VALUES (${search});`;
-          console.log(result);
+        console.log(result);
         return NextResponse.json({ result });
       
         

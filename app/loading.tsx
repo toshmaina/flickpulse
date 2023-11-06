@@ -4,5 +4,4 @@ const loading = () => (
     </p>
   );
 
-
 export default loading;

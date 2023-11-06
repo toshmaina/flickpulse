@@ -11,7 +11,7 @@ const allowedOrigins = process.env.NODE_ENV === 'production'
 
 export const middleware = (req: Request) => {
     const origin:string | null  = req.headers.get('origin');
-    if (origin && !allowedOrigins.includes(origin)) {
+    if (origin && !allowedOrigins.includes(origin) ) {
        return  new NextResponse(null, {
             status: 400, statusText: "Not Allowed ", headers: {
             'Content-Type':"text/plain"
