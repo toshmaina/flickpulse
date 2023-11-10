@@ -10,28 +10,17 @@ const allowedOrigins = process.env.NODE_ENV === 'production'
     : ['http://localhost:3000', 'https://www.google.com'];
 
 export const middleware = (req: Request) => {
-    const origin:string | null  = req.headers.get('origin');
-    if (origin && !allowedOrigins.includes(origin) ) {
+    const origin: string | null = req.headers.get('origin');
+    
+    if (origin &&  !allowedOrigins.includes(origin) ) {
        return  new NextResponse(null, {
-            status: 400, statusText: "Not Allowed ", headers: {
+           status: 400, statusText: "Not Allowed ",
+           headers: {
             'Content-Type':"text/plain"
         }})
 
  }
-      
-
-
-
-
-    console.log(req.method);
-    console.log(req.credentials);
-
-
-
-
-    return NextResponse.next()
-    
-    
+    return NextResponse.next();
 }
 export const config = {
     matcher: '/api/:path*',

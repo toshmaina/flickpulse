@@ -6,7 +6,7 @@ const origin = req.headers.get("origin");
         JSON.stringify({ "message": "Hello world" }), {
         headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": origin!,
+          
         }
     }
     )

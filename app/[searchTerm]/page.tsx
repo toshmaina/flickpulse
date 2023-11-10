@@ -3,26 +3,17 @@ import MovieCard from "../components/MovieCard";
 import fetchMovies from "../lib/getMovies";
 import postSearchTerm from "../lib/postSearchTerm";
 
-
-
-
-type Props = {
-    params: {
-        searchTerm:string 
-    }
-}
- export const generateMetadata = async ({ params: { searchTerm } }: Props): Promise<Metadata> => {
+ export const generateMetadata = async ({ params: { searchTerm } }: ParamsProps): Promise<Metadata> => {
     const data: Promise<Array<Movie> | null> = fetchMovies(searchTerm);
      const movies = await data;
      const search = searchTerm.replaceAll("%20", " ");     
     return {
-        title: Boolean(movies?.[0]?.['Title']) ? search : `${search} Not Found`,
+        title:Boolean(movies?.[0]?.['Title']) ? search : `${search} Not Found`,
         description: `${movies?.[0]?.['Title']} page` ??  `${search} cannot be displayed on this page`
     };
 }; 
 
-
-const movieResults = async  ({ params: { searchTerm } }: Props) => {
+const movieResults = async  ({ params: { searchTerm } }: ParamsProps) => {
     const data: Promise<Array<Movie>> = fetchMovies(searchTerm);
     const movies = await data;
      await  postSearchTerm(searchTerm);

@@ -7,7 +7,7 @@ const postSearchTerm = async (searchTerm: string) => {
         if (!response.ok) throw new Error(`Could not post search term: ${response.statusText}`); 
         console.log(response.statusText);
         const data =  await response.json();
-        console.log(data);   
+        console.log(data); 
     } catch (error) {
         error instanceof Error && console.error(error.message);    
    }

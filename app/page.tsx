@@ -1,14 +1,12 @@
-import Form from "./sections/Form";
-import Heading from "./sections/Heading";
+import Hero from "./carousel/page";
+import Unlimited from "./sections/Unlimited";
 
 
 
   const Home = () => (
-    < section className=" flex-center flex-col w-full mt-20 mx-auto" >
-      <Heading />
- 
-      <Form />
-      
+    < section >
+     <Hero/>
+     <Unlimited/>
     </section>
 ) 
 export default Home;

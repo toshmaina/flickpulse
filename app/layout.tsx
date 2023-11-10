@@ -3,7 +3,7 @@ import "./styles/globals.css";
 
 
 export const metadata: Metadata = {
-  title: 'MovieParadise',
+  title: 'FlickPulse',
   description: 'Discover your favorite movies',
 }
 
@@ -15,10 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="main">
-          < div className="gradient"/>
+        <div className="">
+          < div className=""/>
         </div>
-        <main className='app'>
+        <main className=''>
           {children}
         </main>  
       
