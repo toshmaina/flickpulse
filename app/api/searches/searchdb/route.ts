@@ -12,13 +12,13 @@ export const POST  = async (req: NextRequest, res: NextResponse) => {
     const search = data.replaceAll("%20", " ");
     console.log(search);
     try {
-        const rows = await sql`INSERT INTO Search (searchTerm , Time ) VALUES(${search}, 2:59);`;
+        const rows = await sql`INSERT INTO Search (Searchterm ) VALUES(${search});`;
         if(rows?.rows) throw new Error(`Could not insert the search`);
     } catch (error) {
         return error instanceof Error && NextResponse.json(error);
     }
     const result = await sql`SELECT * FROM pets`
-    return NextResponse.json(result)
+    return NextResponse.json({message:"query successful"})
     
  /*    return NextResponse.json(data); */
 /*     try {
