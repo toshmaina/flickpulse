@@ -1,7 +1,7 @@
 import { sql } from "@vercel/postgres";
 import { NextRequest, NextResponse } from "next/server";
 
-export const POST  = async (req: NextRequest, res: NextResponse) => {
+const POST  = async (req: NextRequest, res: NextResponse) => {
 /*     const { searchParams } = new URL(req.url);
     const dataObj = Object.fromEntries(searchParams);
     const { searchTerm } = dataObj; */
@@ -15,7 +15,7 @@ export const POST  = async (req: NextRequest, res: NextResponse) => {
         const rows = await sql`INSERT INTO  topSearches (searchTerm  ) VALUES(${search});`;
         if(rows?.rows) throw new Error(`Could not insert the search`);
     } catch (error) {
-        return error instanceof Error && NextResponse.json(error);
+        if (error instanceof Error) return  NextResponse.json(error);
     }
    // const result = await sql`SELECT * FROM pets`
   //  return NextResponse.json({message:"query successful"})
@@ -32,4 +32,5 @@ export const POST  = async (req: NextRequest, res: NextResponse) => {
 
    
     
- }
+}
+ export default POST;
