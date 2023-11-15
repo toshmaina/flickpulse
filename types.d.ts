@@ -14,6 +14,7 @@ type ErrorPage = {
 };
 type ParamsProps = {
     params: {
-        searchTerm:string 
+        searchTerm: string
     }
-}
+};
+type apiFunction = (req: NextRequest, res: NextResponse) => Promise<NextResponse<Error> | NextResponse<{ result: QueryResult<QueryResultRow>; }>>

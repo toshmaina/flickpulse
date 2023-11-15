@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-/* The middleware file is used to track requests being sent to the app or an api within */
-/* It is an edge-runtime hence rate limiters cannot be used to inside its file 'cause limiters are dependant to node runtime environment as dev dependencies  */
+/* The middleware file is used to track requests being sent to the app or an api */
+/* It is an edge-runtime hence rate limiters cannot be used  inside its file 'cause limiters are dependant to node runtime environment as dev dependencies  */
 /* All the http visualization tools e.g postman | curl do not have an origin */
 
 

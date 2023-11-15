@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +13,8 @@ const Hero = () => {
   const {href: carousel}: URL  = new URL("../../public/assets/imgs/Greater_Goodies.jpg", import.meta.url)
   const { href: carousel3 }: URL = new URL("../../public/assets/imgs/The_Ultimate.jpg", import.meta.url); 
   const { href: carousel2 }: URL = new URL("../../public/assets/imgs/carousel3.jpg", import.meta.url);
- // const isInternetConnected:boolean   = window.navigator?.onLine;
+  // const isInternetConnected:boolean   = window.navigator?.onLine;
+  const landingPageImage = "https://assets.nflxext.com/ffe/siteui/vlv3/ab4b0b22-2ddf-4d48-ae88-c201ae0267e2/301c9da4-1628-47e9-9eb7-ead9a024147e/KE-en-20231030-popsignuptwoweeks-perspective_alpha_website_large.jpg" || carousel;
     return (
        <div  className="">
         <Carousel
@@ -25,9 +26,10 @@ const Hero = () => {
             interval={2000}
             className="">
                 <div className="   ">
-            <Image
+            <img 
+              width={500} height={500}
           alt="carousel1"
-              src={`${"https://assets.nflxext.com/ffe/siteui/vlv3/ab4b0b22-2ddf-4d48-ae88-c201ae0267e2/301c9da4-1628-47e9-9eb7-ead9a024147e/KE-en-20231030-popsignuptwoweeks-perspective_alpha_website_large.jpg" ?? carousel} `} className="h-screen w-screen  " />
+              src={landingPageImage} className="h-screen w-screen  " />
          
                     <div className="bg-gradient-radial w-screen h-screen    z-10   absolute top-0 left-0  from-black/0 via-black/50  to-black/100"/>
                     <div className="absolute top-10 z-50  left-0  w-full flex  justify-between   items-center">
@@ -61,7 +63,7 @@ const Hero = () => {
                 </div>
                 <div >
                 
-                    <Image alt="carousel2" src={carousel2} width={500} height={500} className=" w-screen h-screen  object-center" /> 
+                    <img  alt="carousel2" src={carousel2} width={500} height={500} className=" w-screen h-screen  object-center" /> 
             <div className="bg-gradient-radial w-screen h-screen   z-10  absolute top-0 left-0  from-black/0 via-black/50  to-black/100" />
              <div className="absolute top-[35%] z-50    left-[10%]  ">
                   <p className="text-8xl text-white  font-bold font-palanquin max-sm:text-[72px] pt-8 max-sm:leading-[82px]">
@@ -74,7 +76,7 @@ const Hero = () => {
               </div>
                 <div >
                 
-                    <Image alt="carousel3" src={carousel3} width={500} height={500} className=" w-screen h-screen  object-center" /> 
+                    <Image  alt="carousel3" src={carousel3} width={500} height={500} className=" w-screen h-screen  object-center" /> 
             <div className="bg-gradient-radial w-screen h-screen   z-10  absolute top-0 left-0  from-black/0 via-black/50  to-black/100" />
              <div className="absolute top-[35%] z-50    left-[10%]  ">
                   <p className="text-8xl text-white  font-bold font-palanquin max-sm:text-[72px] pt-8 max-sm:leading-[82px]">
