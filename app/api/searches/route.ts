@@ -6,7 +6,9 @@ export async function GET(request: Request) {
   
     const result =
         await sql`CREATE TABLE
-                 topSearches (id INTEGER PRIMARY KEY , searchTerm  VARCHAR(255));`;
+                 topSearches (id INTEGER PRIMARY KEY  , searchTerm  VARCHAR(255));`;
+
+    
     return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });

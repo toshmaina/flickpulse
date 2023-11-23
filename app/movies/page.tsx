@@ -14,7 +14,7 @@ const Form = () => {
     const router: AppRouterInstance = useRouter(); 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push(`/${searchTerm}`)
+    router.push(`movies/${searchTerm}`)
     setSearchTerm("");
 }
     const [searchTerm, setSearchTerm] = useState<string>("");

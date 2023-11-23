@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import MovieCard from "../components/MovieCard";
-import fetchMovies from "../lib/getMovies";
-import postSearchTerm from "../lib/postSearchTerm";
+import MovieCard from "../../components/MovieCard";
+import fetchMovies from "../../lib/getMovies";
+import postSearchTerm from "../../lib/postSearchTerm";
 
  export const generateMetadata = async ({ params: { searchTerm } }: ParamsProps): Promise<Metadata> => {
     const data: Promise<Array<Movie> | null> = fetchMovies(searchTerm);
@@ -13,7 +13,7 @@ import postSearchTerm from "../lib/postSearchTerm";
     };
 }; 
 
-const movieResults = async  ({ params: { searchTerm } }: ParamsProps) => {
+const MovieResults = async  ({ params: { searchTerm } }: ParamsProps) => {
     const data: Promise<Array<Movie>> = fetchMovies(searchTerm);
     const movies = await data;
      await  postSearchTerm(searchTerm);
@@ -35,4 +35,4 @@ const movieResults = async  ({ params: { searchTerm } }: ParamsProps) => {
 }
 
 
-export default movieResults;
+export default MovieResults;

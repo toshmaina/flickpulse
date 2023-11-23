@@ -4,24 +4,33 @@ import { NextResponse } from "next/server";
 /* It is an edge-runtime hence rate limiters cannot be used  inside its file 'cause limiters are dependant to node runtime environment as dev dependencies  */
 /* All the http visualization tools e.g postman | curl do not have an origin */
 
+  export { default } from "next-auth/middleware"; //This export tracks all the routes that requires authentication in the app
 
-const allowedOrigins = process.env.NODE_ENV === 'production'
+
+
+const allowedOrigins = process.env.NODE_ENV === "production"
     ? ['https://www.myWebSite.com']
     : ['http://localhost:3000', 'https://www.google.com'];
 
-export const middleware = (req: Request) => {
+  
+
+export const middlewares = (req: Request) => {
     const origin: string | null = req.headers.get('origin');
-    
-    if (origin &&  !allowedOrigins.includes(origin) ) {
+    console.log(origin);
+    const regex: RegExp = new RegExp('/api/*');
+
+    if ( origin && !allowedOrigins.includes(origin)) {   
        return  new NextResponse(null, {
-           status: 400, statusText: "Not Allowed ",
+           status: 400,
+           statusText: "Bad Request",
            headers: {
             'Content-Type':"text/plain"
         }})
 
- }
+    };
+
     return NextResponse.next();
 }
-export const config = {
-    matcher: '/api/:path*',
+  export const config = {
+    matcher: ['/movies/:path*', '/movies']
 }

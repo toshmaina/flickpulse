@@ -18,3 +18,8 @@ type ParamsProps = {
     }
 };
 type apiFunction = (req: NextRequest, res: NextResponse) => Promise<NextResponse<Error> | NextResponse<{ result: QueryResult<QueryResultRow>; }>>
+type FAQs = {
+    id: number,
+    question: string,
+    answer: string
+}
