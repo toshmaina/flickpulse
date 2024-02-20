@@ -7,12 +7,10 @@ export const POST  = async (req: NextRequest) => {
     try {    
         const rows = await sql`INSERT INTO   topSearches (searchTerm)  VALUES ( ${data}) ;`;
         if (!rows?.rows) throw new Error('Could not insert the search');
-        
-        
         return NextResponse.json(rows,{statusText: 'success'});
       
     } catch (error) {
-        if (error instanceof Error) return  NextResponse.json(error,{statusText: 'error'});
+       return  NextResponse.json(error ,{statusText: error instanceof Error ? error?.message: ''});
     }
 
   

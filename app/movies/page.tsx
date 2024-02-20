@@ -11,6 +11,7 @@ import { BsSearch } from "react-icons/bs";
 
 
 const Form = () => {
+ 
     const router: AppRouterInstance = useRouter(); 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

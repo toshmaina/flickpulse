@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 interface Props {
   data:FAQs
 }
-const QuestionCard = ({data}:Props) => {
+const QuestionCard:React.FC<Props> = ({data}:Props) => {
     const [toggle, setToggle] = useState<boolean>(true);
   const sign: string = !toggle ? "-" : "+";
     useEffect(() => {
@@ -16,7 +16,7 @@ const QuestionCard = ({data}:Props) => {
     AOS.refresh();
   }, []);
   
-  const { id : position , question, answer } = data; 
+  const { id : position , question, answer }:FAQs = data; 
   
   return (
            <div
@@ -29,7 +29,7 @@ const QuestionCard = ({data}:Props) => {
                 <p className="mb-1  ml-4 mt-4  text-2xl font-[400] font-palanquin  text-white ">
                  {question}
               </p>
-              <span   onClick={() => setToggle(!toggle)} className="text-7xl text-white  mx-4 ">{sign}</span>
+              <span   onClick={() => setToggle(toggle => !toggle)} className="text-7xl text-white  mx-4 ">{sign}</span>
                 </div> 
       <p className={`mb-4 ${toggle && 'h-0 hidden'}   transition-all ml-4 mt-4 font-montserrat text-xl text-slate-gray font-[400] text-start  `}>
         {answer}

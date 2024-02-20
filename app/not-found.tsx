@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 const { href: pageNotFound }: URL = new URL("../public/assets/imgs/pageNotFound.svg", import.meta.url);
 
-export const metadata: Metadata ={
+export const metadata: Metadata = {
     title: "Page Not Found",
     description: "Page not found"
   }

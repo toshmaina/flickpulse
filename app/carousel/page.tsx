@@ -1,18 +1,30 @@
 "use client";
 
+
+import { LoginLink, LogoutLink, RegisterLink, useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import { KindeState } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 import Link from "next/link";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
- export const landingPageImage = "https://assets.nflxext.com/ffe/siteui/vlv3/ab4b0b22-2ddf-4d48-ae88-c201ae0267e2/301c9da4-1628-47e9-9eb7-ead9a024147e/KE-en-20231030-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+export const landingPageImage = "https://assets.nflxext.com/ffe/siteui/vlv3/ab4b0b22-2ddf-4d48-ae88-c201ae0267e2/301c9da4-1628-47e9-9eb7-ead9a024147e/KE-en-20231030-popsignuptwoweeks-perspective_alpha_website_large.jpg"
 
 
 
-const Hero = () => {
- 
+
+ // const user:KindeUser|null = await getUser();
+
+
+
+
+const Hero: React.FC = () => {
+  const { user }:KindeState = useKindeBrowserClient();
+
   const { href: carousel }: URL = new URL("../../public/assets/imgs/Greater_Goodies.jpg", import.meta.url);
   const { href: carousel3 }: URL = new URL("../../public/assets/imgs/The_Ultimate.jpg", import.meta.url); 
   const { href: carousel2 }: URL = new URL("../../public/assets/imgs/carousel3.jpg", import.meta.url);
   // const isInternetConnected:boolean   = window.navigator?.onLine;
+/*   const isInternetConnected: boolean = navigator ? navigator?.onLine : false; */
+
 
     return (
        <div  className=" ">
@@ -33,9 +45,16 @@ const Hero = () => {
                     <div className="bg-gradient-radial w-screen h-screen    z-10   absolute top-0 left-0  from-black/0 via-black/50  to-black/100"/>
                     <div className="absolute top-10 z-50  left-0  w-full flex  justify-between   items-center">
               <p className=" text-[#de593bee]  text-6xl ml-5   lg:ml-[15rem] font-bold   font-palanquin  "> <Link href="/carousel">FlickPulse</Link> </p> 
-              
-             <Link href="/signin">
-                <button className="text-white lg:mr-[14rem] mr-5 rounded-md font-montserrat   bg-[#de593bee] py-2 px-4 "> Sign in</button></Link>
+             { user?.id ?
+    <button
+               
+        className="text-white lg:mr-[14rem] mr-5 rounded-md font-montserrat   bg-[#de593bee] py-1.5 px-3 "> <LoginLink postLoginRedirectURL="/movies">Sign in</LoginLink></button>
+    : <button
+        className="text-white lg:mr-[14rem] mr-5 rounded-md font-montserrat   bg-[#de593bee] py-1.5 px-3 "> <LogoutLink>Sign out</LogoutLink></button>
+}
+               {/*  <button
+               
+                  className="text-white lg:mr-[14rem] mr-5 rounded-md font-montserrat   bg-[#de593bee] py-2 px-4 "> <RegisterLink>Sign up</RegisterLink></button> */}
              
                 </div>
                 <div className="absolute top-[35%] z-50 w-full text-center    left-0   ">
@@ -57,7 +76,7 @@ const Hero = () => {
       <div className="flex max-lg:justify-end items-center max-sm:w-full  ">
 
        <button className="font-montserrat   bg-[#de593bee]  rounded-full  text-white  flex  justify-center items-center px-7 py-3      text-lg border-0  leading-none    h-fit">  
-        Get Started 
+       <RegisterLink postLoginRedirectURL="/movies"> Get Started </RegisterLink>
     </button> 
         </div>
         </div>

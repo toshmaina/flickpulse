@@ -7,9 +7,11 @@ try {
         (question, answer)
      VALUES
         (${question5}, ${answer5}),
-        (${question6}, ${answer6});`;
+        (${question6}, ${answer6})
+        ON  CONFLICT(question)  DO NOTHING
+        ;`;
     if (!result?.rows) throw new Error("Could not insert into UniqueFAQ's table"); 
 } catch (error) {
-    error instanceof Error && console.log(error.message); 
+    error instanceof Error && console.error(error.message); 
 }
 } 

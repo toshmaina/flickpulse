@@ -1,7 +1,9 @@
 
 import QuestionCard from "../components/QuestionCard";
 import { getFrequentlyAskedQuestions } from "../lib/getFrequentlyAskedQuestions";
-const faqs:Array<FAQs> = await getFrequentlyAskedQuestions();
+const faqs: Array<FAQs> = await getFrequentlyAskedQuestions() as Array<FAQs>;
+
+
 const FrequentlyAskedQuestions = () => {
   return (
     <section className="mt-0 pb-24  w-full    relative flex flex-col  top-0 left-0  bg-black   ">

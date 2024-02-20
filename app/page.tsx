@@ -1,22 +1,23 @@
-import Hero from "./carousel/page";
-import CreateProfileForKids from "./sections/CreateProfileForKids";
-import EasyDownload from "./sections/EasyDownload";
-import Footer from "./sections/Footer";
-import FrequentlyAskedQuestions from "./sections/FrequentlyAskedQuestions";
-import Unlimited from "./sections/Unlimited";
-import WatchFromAnyWhere from "./sections/WatchFromAnyWhere";
+
+import {
+  CreateProfileForKids,
+  EasyDownload,
+  Footer,
+  FrequentlyAskedQuestions,
+  Hero,
+  Unlimited,
+  WatchFromAnyWhere
+} from "./sections";
 
 
-
-
-  const Home = () => (
+  const Home:React.FC = () => (
     < section > 
     <Hero />
     <Unlimited />
     <EasyDownload />
     <WatchFromAnyWhere /> 
     <CreateProfileForKids />
-    <FrequentlyAskedQuestions />
+     <FrequentlyAskedQuestions /> 
     <Footer/>      
     </section>
 ) 
