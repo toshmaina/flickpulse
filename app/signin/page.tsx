@@ -7,7 +7,7 @@ import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { landingPageImage } from "../carousel/page";
 import { createTableUsers } from "../lib/createTableUsers";
 import { postNewUserToTableUsers } from "../lib/postNewUserToUsers";
-const page:React.FC =  () => {
+const Page:React.FC =  () => {
   const [showPassword, setShowPassword] = useState<boolean>(true);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -73,4 +73,4 @@ const page:React.FC =  () => {
   );
 }
 
-export default page;
+export default Page;
